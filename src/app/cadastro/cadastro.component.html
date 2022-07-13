@@ -1,0 +1,112 @@
+
+<body>
+  <content>
+    
+  </content>
+<p>cadastro works!</p>
+
+<form  (ngSubmit)="onSubmitTemplateBased(value)">
+    <fieldset ngModelGroup="login">
+
+      <div class="row col-12">
+        <div class="col-5">
+         
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>nome:l</mat-label>
+              <input matInput  name="nome" type="text" [(ngModel)]="nome" value="" required>
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>sobrenome:</mat-label>
+              <input matInput  name="sobreNome" type="text"  [(ngModel)]="sobrenome" required>
+            </mat-form-field>
+          
+        </div>
+        <div class="col-4">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker2" name="dataDeNascimento" placehold="Data Nascimento" type="text" [(ngModel)]="dataDeNascimento"  required >
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+ 
+        </div>
+        <div class="col-3">
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>cpf:</mat-label>
+              <input matInput  name="CPF" placehold="CPF" type="text" [(ngModel)]="cpf"   required>
+           
+            </mat-form-field>
+            
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Numero do Rg:</mat-label>
+              <input matInput  name="RG" placehold="RG" type="text" [(ngModel)]="rg"   required>
+            </mat-form-field>
+
+            
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>UF do RG:</mat-label>
+              <input matInput  name="UF" placehold="UF do RG" type="text" [(ngModel)]="UfDoRg"   required>
+            </mat-form-field>
+
+        </div>
+      </div>
+
+
+  
+
+
+
+  <div class="row col-12">
+    <fieldset ngModelGroup="contato">
+    
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput name="email" placehold="e-mail" type="text" [(ngModel)]="email" required>
+      </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Celular</mat-label>
+      <input matInput name="celular" placehold="celular" type="text" [(ngModel)]="celular" required>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Telefone Fixo</mat-label>
+      <input matInput placeholder="Ex. Pizza"  name="telefone" placehold="telefone fixo" type="text"  [(ngModel)]="telefoneFixo" required>
+    </mat-form-field>
+    
+
+  </fieldset>
+  </div>  
+   <!-- <input name="carteirinhaDoConvenio" placehold="Carteirinha do convenio" type="text" [(ngModel)]="carteirinhaDoConvenio"  />-->
+    <h4>Selecione o convenio</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Selecione o seu convenio</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let carteirinhaDoConvenios of carteirinhaDoConvenio" [value]="carteirinhaDoConvenios.value">
+          {{carteirinhaDoConvenios.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Validade da carteirinha</mat-label>
+      <input matInput [matDatepicker]="picker" name="validadeDaCarteirinha" placehold="validade da carteirinha" type="text" [(ngModel)]="validadeDaCarteirinha" required>
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    </fieldset>
+    <p>
+      <button type="submit" (clik)="this.botaoSalvar($event)">Submit</button>
+    </p>
+</form>
+<li *ngFor="let item of dataCadastro[0]">{{item.name}} - {{item.dataDeNascimento}} - {{item.cpf}}</li>
+
+</body>
